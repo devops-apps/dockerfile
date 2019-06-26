@@ -9,6 +9,9 @@
 # Set the base image source.
 FROM registry.cn-hangzhou.aliyuncs.com/oslibrary/centos:7.6
 
+# Expose services port for images
+EXPOSE 80 443
+
 # Add install package and configure file for images
 COPY nginx_work /data/apps/nginx
 
@@ -20,9 +23,6 @@ RUN groupadd -r nginx \
   && yum clean all \
   && rm -rf /var/cache/yum \
   && rm -r /usr/share/man 
-
-# Expose services port for images
-EXPOSE 80 443
 
 # Set the application excute  command
 CMD ["nginx", "-g", "daemon off;"]
