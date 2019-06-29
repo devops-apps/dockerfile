@@ -10,9 +10,10 @@
 FROM centos:latest
 
 # Add basic command for system
-copy basic-cmd/wget basic-cmd/netstat /usr/bin/
+copy basic-cmd/* /usr/sbin/
 
 # Change mirrors to aliyun mirror and set time zone to shangahi zone  for system.
 RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak \
   && wget http://mirrors.aliyun.com/repo/Centos-7.repo -P /etc/yum.repos.d/ >/dev/null 2>&1 \
-  && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
+  && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+  && echo "Asia/Shanghai" > /etc/timezone

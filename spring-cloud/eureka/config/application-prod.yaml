@@ -1,0 +1,37 @@
+# This is spring boot config. For more information on how to configure the springboot vaule please refer to:
+# https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+#---------------------------------------------------------------------------------------
+# apps globle setings
+#---------------------------------------------------------------------------------------
+server:
+   peer01: ${spring.cloud.client.ipAddress}
+   localhost: ${spring.cloud.client.ipAddress}
+   prot: 8080
+
+---
+auth:
+   user: mo9
+   password: Mo92018
+
+---
+eureka:
+   environment: production
+   datacenter: mo9
+   instance:
+      hostname: ${server.localhost}
+      prefer-ip-address: false
+      instance-id: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}
+   client:
+      register-with-eureka: false
+      fetch-registry: false
+      prefer-same-zone-eureka: true
+      use-dns-for-fetching-service-urls: false
+      region: shanghai
+      availability-zones:
+         shanghai: defaultZone
+      serviceUrl:
+         defaultZone: http://${auth.user}:${auth.password}@${server.peer01}:${server.prot}/register/eureka/
+   server:
+      enableSelfPreservation: true
+      eviction-interval-timer-in-ms: 5000
+      waitTimeInMsWhenSyncEmpty: 0

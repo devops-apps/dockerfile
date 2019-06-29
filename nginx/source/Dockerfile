@@ -7,7 +7,7 @@
 # blog:  http://home.51cto.com/space?uid=6170059
 
 # Set the base image source.
-FROM registry.cn-hangzhou.aliyuncs.com/oslibrary/centos:7.6
+FROM registry.cn-hangzhou.aliyuncs.com/oslibrary/centos:latest
 
 # Define variables for tengine. 
 ENV DOWN_URL="http://tengine.taobao.org/download/tengine-2.1.2.tar.gz" \

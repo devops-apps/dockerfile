@@ -7,7 +7,7 @@
 # blog:  http://blog.51cto.com/space?uid=6170059
 
 # Set the base image source.
-FROM registry.cn-hangzhou.aliyuncs.com/oslibrary/centos:7.6
+FROM registry.cn-hangzhou.aliyuncs.com/oslibrary/centos:latest
 
 # Expose services port for images
 EXPOSE 80 443
